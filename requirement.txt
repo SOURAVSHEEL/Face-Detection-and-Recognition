@@ -1,0 +1,24 @@
+opencv-python
+numpy
+scipy
+imutils
+tqdm
+scikit-learn
+matplotlib
+seaborn
+streamlit
+
+
+# Face Recognition / Embeddings
+insightface         # Includes ArcFace, retinaface, etc.
+onnxruntime                # Required for InsightFace & YOLO ONNX
+
+# Face Detection Models
+mtcnn
+mediapipe
+torch                      # Required for MTCNN and some RetinaFace
+
+# For YOLOv5 ONNX inference
+ultralytics                # For YOLOv5 if using their native model
+opencv-python-headless     # Sometimes required for ONNX runtime compatibility
+
