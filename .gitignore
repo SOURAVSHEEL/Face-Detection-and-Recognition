@@ -12,4 +12,6 @@ venv/
 *.sqlite3
 *.pt
 *.h5
+/anti_spoofing/dataset
+
 
