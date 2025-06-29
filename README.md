@@ -2,6 +2,8 @@
 
 Real-time face recognition system with anti-spoofing using Deep Learning, FAISS search, and  OpenCV. It combines detection, recognition, Anti-Spoofing 
 
+![Demo](assets/inference_output.gif)
+
 ---
 
 ## 🚀 Features
