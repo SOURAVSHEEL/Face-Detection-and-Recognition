@@ -33,9 +33,9 @@ class DeepPiXBiS(nn.Module):
 
         # Load pre-trained ResNet18 and remove the final layers
         self.backbone = models.resnet18(pretrained=True)
-        self.backbone = nn.Sequential(*list(self.backbone.children())[:-2])  # Output: [B, 512, H, W]
+        self.backbone = nn.Sequential(*list(self.backbone.children())[:-2])  # Output: [B, 512, H, W]  (32, 512, 7,7)
 
-        self.dropout  = nn.Dropout2d(p=0.3)
+        self.dropout  = nn.Dropout2d(p=0.3)  
 
         # Pixel-wise classification layer
         self.conv_last = nn.Conv2d(512, 1, kernel_size=1)  # Output: [B, 1, H, W]
