@@ -11,17 +11,17 @@ class FaceNetEmbedder:
         self.model = InceptionResnetV1(pretrained='vggface2').eval().to(device)
 
         self.transform = transforms.Compose([
-            transforms.Resize((160, 160)),
-            transforms.ToTensor(),
-            transforms.Normalize([0.5], [0.5])
-        ])
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+    ])
 
     def preprocess(self, face):
         """
         Args:
             face (np.ndarray): BGR image from OpenCV
         Returns:
-            torch.Tensor: [1, 3, 160, 160]
+            torch.Tensor: [1, 3, 224, 224]
         """
         face_rgb = cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
         pil_img = Image.fromarray(face_rgb)

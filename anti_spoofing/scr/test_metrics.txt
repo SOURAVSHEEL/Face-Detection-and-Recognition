@@ -1,0 +1,6 @@
+==== Anti-Spoofing Test Metrics ====
+Accuracy     : 0.9371
+F1 Score     : 0.9362
+Confusion Matrix:
+[[9629  499]
+ [ 776 9352]]

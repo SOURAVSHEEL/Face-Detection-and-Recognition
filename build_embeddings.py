@@ -6,7 +6,8 @@ import faiss
 import pickle
 
 from utils.logger import setup_logger
-from face_detectors import detect_mtcnn
+# from face_detectors import detect_mtcnn
+from face_detectors import detect_mediapipe as detector  # You can switch to MTCNN if preferred
 from feature_extractors.facenet_extractor import FaceNetEmbedder
 
 logger = setup_logger()
@@ -37,7 +38,7 @@ def build_faiss_index(data_dir="data", index_path="faiss_index/index.bin", label
             logger.warning(f"Failed to load image: {img_path}")
             continue
 
-        boxes = detect_mtcnn.detect_faces(image)
+        boxes = detector.detect_faces(image)
         if not boxes:
             logger.warning(f"No face detected: {img_path}")
             continue

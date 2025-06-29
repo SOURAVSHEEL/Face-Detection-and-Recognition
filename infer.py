@@ -4,12 +4,15 @@ import faiss
 import pickle
 import time
 import collections
+import torch
 
 from utils.logger import setup_logger
-# from face_detectors import  detect_mtcnn as detector
+# from face_detectors import detect_mtcnn as detector
 from face_detectors import detect_mediapipe as detector
 
 from feature_extractors.facenet_extractor import FaceNetEmbedder
+from anti_spoofing.scr.deepPixBiS_model import DeepPiXBiS
+from preprocess import preprocess_image  # your custom preprocessing
 
 logger = setup_logger()
 
@@ -19,13 +22,28 @@ with open("faiss_index/labels.pkl", "rb") as f:
     label_map = pickle.load(f)
 
 embedder = FaceNetEmbedder()
-THRESHOLD = 1.0  # Adjust based on testing
+THRESHOLD = 1.0  # For face recognition
+
+# Anti-spoofing model setup
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+anti_spoof_model = DeepPiXBiS().to(device)
+anti_spoof_model.load_state_dict(torch.load(r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v2.pth", map_location=device))
+anti_spoof_model.eval()
+
+def is_real_face(face_crop):
+    tensor = preprocess_image(face_crop).to(device)
+
+    with torch.no_grad():
+        _, global_output = anti_spoof_model(tensor)
+        prediction = torch.sigmoid(global_output).item()
+    
+    return prediction > 0.5  # True if real, False if spoof
 
 def recognize_face(face_crop):
     emb = embedder.get_embedding(face_crop).astype("float32")
     emb = np.expand_dims(emb, axis=0)  # [1, 512]
 
-    D, I = faiss_index.search(emb, k=1)  # nearest neighbor
+    D, I = faiss_index.search(emb, k=1)
     dist, idx = D[0][0], I[0][0]
 
     if dist < THRESHOLD:
@@ -40,7 +58,7 @@ def run_inference(video_source=0):
         logger.error("Could not open video source.")
         return
 
-    logger.info("Running inference... Press 'q' to quit.")
+    logger.info("Running real-time inference... Press 'q' to quit.")
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -51,7 +69,6 @@ def run_inference(video_source=0):
         detect_time = time.time() - start
 
         for (x1, y1, x2, y2) in boxes:
-            # Expand slightly
             margin = 0.2
             width, height = x2 - x1, y2 - y1
             x1_e = max(int(x1 - margin * width), 0)
@@ -63,23 +80,26 @@ def run_inference(video_source=0):
             if face_crop.size == 0:
                 continue
 
-            name, dist = recognize_face(face_crop)
-            color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
-            label = f"{name} ({dist:.2f})" if name != "Unknown" else "Unknown"
+            if is_real_face(face_crop):
+                name, dist = recognize_face(face_crop)
+                label = f"{name} ({dist:.2f})" if name != "Unknown" else "Unknown"
+                color = (0, 255, 0)
+            else:
+                label = "Spoof Detected"
+                color = (0, 0, 255)
 
             cv2.rectangle(frame, (x1_e, y1_e), (x2_e, y2_e), color, 2)
-            cv2.putText(frame, label, (x1_e, y1_e - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+            cv2.putText(frame, label, (x1_e, y1_e - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
         fps = 1.0 / detect_time if detect_time > 0 else 0.0
-        # Add to FPS history
         fps_history.append(fps)
         avg_fps = sum(fps_history) / len(fps_history)
-        cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30), 
+        cv2.putText(frame, f"FPS: {avg_fps:.2f}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
 
-        cv2.imshow("Face Recognition - Press 'q' to quit", frame)
-        key = cv2.waitKey(1)
-        if key == ord('q'):
+        cv2.imshow("Face Recognition + Anti-Spoofing", frame)
+        if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
     cap.release()
@@ -88,7 +108,7 @@ def run_inference(video_source=0):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--video", help="Path to video file (or leave empty for webcam)", default=0)
+    parser.add_argument("--video", help="Video path or 0 for webcam", default=0)
     args = parser.parse_args()
 
     video_source = args.video if args.video != "0" else 0
