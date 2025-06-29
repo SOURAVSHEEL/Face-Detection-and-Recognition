@@ -1,3 +1,5 @@
+# data_preparation.py
+
 import torch
 import cv2
 import numpy as np
@@ -23,13 +25,13 @@ class AntiSpoofingDataset(Dataset):
             label = 1  # live
         else:
             img_path = os.path.join(self.spoof_dir, self.spoof_images[index - len(self.live_images)])
-            label = 1 # spoof
+            label = 0  # spoof
 
-        
+        # Read and convert to RGB
         img = cv2.imread(img_path)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = cv2.resize(img, (224, 224))
-        img = img / 255.0   # Normalize to [0,1]
+        img = Image.fromarray(img)
 
         if self.transform:
             img = self.transform(img)
@@ -38,7 +40,7 @@ class AntiSpoofingDataset(Dataset):
 
 # Define transforms
 transform = transforms.Compose([
-    transforms.ToTensor(),
+    transforms.Resize((224, 224)),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),  # Automatically converts [0,255] to [0,1]
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
