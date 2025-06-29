@@ -27,7 +27,7 @@ THRESHOLD = 1.0  # For face recognition
 # Anti-spoofing model setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 anti_spoof_model = DeepPiXBiS().to(device)
-anti_spoof_model.load_state_dict(torch.load(r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v2.pth", map_location=device))
+anti_spoof_model.load_state_dict(torch.load(r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v3.pth", map_location=device))
 anti_spoof_model.eval()
 
 def is_real_face(face_crop):

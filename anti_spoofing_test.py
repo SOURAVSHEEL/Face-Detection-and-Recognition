@@ -9,7 +9,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load DeepPixBiS model
 model = DeepPiXBiS().to(device)
-model_path = r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v2.pth"
+model_path = r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v3.pth"
 model.load_state_dict(torch.load(model_path, map_location=device))
 model.eval()
 
