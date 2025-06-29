@@ -67,14 +67,20 @@ def run_inference(video_source=0):
         return
 
     logger.info("Running real-time inference... Press 'q' to quit.")
+
+    frame_count = 0
+    start_time = time.time()
+
     while True:
         ret, frame = cap.read()
         if not ret:
             break
 
-        start = time.time()
+        detect_start = time.time()
         boxes = detector.detect_faces(frame)
-        detect_time = time.time() - start
+        detect_time = (time.time() - detect_start) * 1000  # in milliseconds
+
+        match_time = 0  # Initialize match time
 
         for (x1, y1, x2, y2) in boxes:
             margin = 0.2
@@ -87,6 +93,8 @@ def run_inference(video_source=0):
             face_crop = frame[y1_e:y2_e, x1_e:x2_e]
             if face_crop.size == 0:
                 continue
+            
+            match_start = time.time()
 
             if is_real_face(face_crop):
                 name, dist = recognize_face(face_crop)
@@ -96,18 +104,36 @@ def run_inference(video_source=0):
                 label = "Spoof Detected"
                 color = (0, 0, 255)
 
+            match_time = (time.time()  - match_start) * 1000 # in milliseconds
+
             cv2.rectangle(frame, (x1_e, y1_e), (x2_e, y2_e), color, 2)
             cv2.putText(frame, label, (x1_e, y1_e - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
-        fps = 1.0 / detect_time if detect_time > 0 else 0.0
-        fps_history.append(fps)
-        avg_fps = sum(fps_history) / len(fps_history)
-        cv2.putText(frame, f"FPS: {avg_fps:.2f}", (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+        ## FPS  calculation
+        frame_count += 1
+        elapsed_time = time.time() - start_time
+        if elapsed_time > 0:
+            fps = frame_count / elapsed_time
+        else:
+            fps = 0.0
+
+        logger.info(f"Frame {frame_count}: Detected {len(boxes)} faces, "
+                    f"Detection Time: {detect_time:.2f} ms, "
+                    f"Match Time: {match_time:.2f} ms, "
+                    f"FPS: {fps:.2f}")  
+
+        # === Display Stats ===
+        cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 3)
+        cv2.putText(frame, f"Detection Time: {detect_time:.1f} ms", (10, 60),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (200, 255, 200), 2)
+        cv2.putText(frame, f"Matching Time: {match_time:.1f} ms", (10, 90),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (200, 200, 255), 2)
 
         cv2.imshow("Face Recognition + Anti-Spoofing", frame)
         out.write(frame)
+
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
@@ -115,6 +141,7 @@ def run_inference(video_source=0):
     out.release()
     cv2.destroyAllWindows()
     logger.info(f"Output video saved to {output_path}")
+
 
 if __name__ == "__main__":
     import argparse
