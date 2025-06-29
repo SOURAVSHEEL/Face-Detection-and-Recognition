@@ -20,17 +20,20 @@ Real-time face recognition system with anti-spoofing using Deep Learning, FAISS 
 ## 📊 Models
 
 ### Face Detection
+
 - **MediaPipe**: Fast and lightweight face detection
 - **MTCNN**: Multi-task CNN for face detection and alignment
 - **RetinaFace**: High-accuracy face detection with landmarks
 
 ### Anti-Spoofing
+
 - **DeepPixBiS**: Deep Pixel-wise Binary Supervision for face anti-spoofing
   - Multiple model versions (v1, v2, v3) available, best version is v3 
   - Trained on CASIA-FASD (Face Anti-Spoofing Database) dataset
   - Performs pixel-wise binary classification for liveness detection
 
 ### Face Recognition
+
 - **FaceNet**: Deep learning model for face verification and recognition
 - **Feature Extraction**: 512-dimensional face embeddings
 - **FAISS Indexing**: Fast similarity search for large face databases
@@ -42,21 +45,25 @@ Real-time face recognition system with anti-spoofing using Deep Learning, FAISS 
 ### Training
 
 1. **Prepare your dataset**
+
    ```bash
    src/data_preparation.py
    ```
 
 2. **DeepPixBis  implementation**
+
    ```bash
    src/deepPixBis_model.py
    ```
 
 3. **Training loop**
+
    ```bash
    src/train.py
    ```
 
-3. **Training Pipeline**
+4. **Training Pipeline**
+
    ```bash
    python src/train_pipeline.py
    ```
@@ -64,6 +71,7 @@ Real-time face recognition system with anti-spoofing using Deep Learning, FAISS 
 ### Testing
 
 1. **Real-time testing**
+
    ```bash
    python src/realtime_test.py
    ```
@@ -71,11 +79,13 @@ Real-time face recognition system with anti-spoofing using Deep Learning, FAISS 
 ### Face Registration
 
 1. **Register new faces**
+
    ```bash
    python register.py  --name "Name"
    ```
 
 2. **Build face embeddings**
+
    ```bash
    python feature_extractors/build_embeddings.py
    ```
@@ -87,9 +97,11 @@ python feature_extractors/infer.py
 ```
 
 ---
+
 ## 📊 Dataset Information
 
 ### CASIA-FASD Dataset
+
 This project uses the **CASIA Face Anti-Spoofing Database** for training the DeepPixBiS model:
 
 - **Attack Types**: 
@@ -104,7 +116,6 @@ This project uses the **CASIA Face Anti-Spoofing Database** for training the Dee
 
 Organize your dataset as follows:
 
-```
 dataset/
 ├── train/
 │   ├── live/     # Real face images
@@ -112,8 +123,6 @@ dataset/
 └── test/
     ├── live/     # Test real face images
     └── spoof/    # Test spoofed face images
-```
-
 
 ---
 
