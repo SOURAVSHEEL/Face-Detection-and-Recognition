@@ -14,9 +14,8 @@ st.set_page_config(page_title="Face Recognition", layout="centered")
 st.title("Real-time Face Recognition App")
 tab = st.sidebar.radio("Choose Mode", ["Register Face", "Recognize Face"], key="mode_selector")
 
-# ------------------------------
 # Webcam Face Registration
-# ------------------------------
+
 if tab == "Register Face":
     st.subheader("Register New Face via Webcam")
     name = st.text_input("Enter name:")
@@ -54,9 +53,8 @@ if tab == "Register Face":
     elif start:
         st.warning("Please enter a name before enabling webcam.")
 
-# ------------------------------
+
 # Webcam Face Recognition
-# ------------------------------
 elif tab == "Recognize Face":
     st.subheader("Real-time Face Recognition via Webcam")
 
