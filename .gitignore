@@ -14,3 +14,4 @@ venv/
 *.h5
 /anti_spoofing/dataset
 /anti_spoofing/model
+*anti_spoofing/model
