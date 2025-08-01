@@ -1,0 +1,26 @@
+2025-08-01 01:34:16,972 | INFO | Using device: cuda
+2025-08-01 01:34:16,975 | INFO | GPU: NVIDIA GeForce RTX 3050 6GB Laptop GPU
+2025-08-01 01:34:16,976 | INFO | Train directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\train
+2025-08-01 01:34:16,977 | INFO | Test directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\test
+2025-08-01 01:34:16,978 | INFO | Batch size: 32, Number of epochs: 10
+2025-08-01 01:34:17,881 | INFO | Starting training for 10 epochs.
+2025-08-01 01:41:10,381 | INFO | Epoch 1/10 | Loss: 0.0073 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-01 01:41:10,475 | INFO | Saved best model checkpoint.
+2025-08-01 01:49:54,988 | INFO | Epoch 2/10 | Loss: 0.0002 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-01 01:55:02,177 | INFO | Epoch 3/10 | Loss: 0.0004 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-01 01:59:38,043 | INFO | Epoch 4/10 | Loss: 0.0000 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-01 02:03:42,349 | INFO | Epoch 5/10 | Loss: 0.0017 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-01 02:03:42,350 | INFO | Early stopping triggered.
+2025-08-01 02:03:42,350 | INFO | Training complete.
+2025-08-01 02:03:42,480 | INFO | Loaded best model checkpoint for testing.
+2025-08-01 02:10:19,408 | INFO | Evaluating thresholds:
+2025-08-01 02:10:19,416 | INFO | Threshold: 0.40 | Precision: 0.9800 | Recall: 0.9798 | F1: 0.9798
+2025-08-01 02:10:19,424 | INFO | Threshold: 0.45 | Precision: 0.9792 | Recall: 0.9791 | F1: 0.9791
+2025-08-01 02:10:19,434 | INFO | Threshold: 0.50 | Precision: 0.9793 | Recall: 0.9793 | F1: 0.9793
+2025-08-01 02:10:19,444 | INFO | Threshold: 0.55 | Precision: 0.9796 | Recall: 0.9795 | F1: 0.9795
+2025-08-01 02:10:19,457 | INFO | Threshold: 0.60 | Precision: 0.9790 | Recall: 0.9790 | F1: 0.9790
+2025-08-01 02:10:19,465 | INFO | Threshold: 0.65 | Precision: 0.9783 | Recall: 0.9783 | F1: 0.9783
+2025-08-01 02:10:19,474 | INFO | Threshold: 0.70 | Precision: 0.9780 | Recall: 0.9780 | F1: 0.9780
+2025-08-01 02:10:19,481 | INFO | Threshold: 0.75 | Precision: 0.9780 | Recall: 0.9779 | F1: 0.9779
+2025-08-01 02:10:19,482 | INFO | Best Threshold: 0.40 with Macro F1: 0.9798
+2025-08-01 03:51:21,636 | INFO | Best threshold selected: 0.40

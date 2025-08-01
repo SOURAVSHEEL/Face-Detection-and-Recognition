@@ -8,7 +8,6 @@ matplotlib
 seaborn
 streamlit
 
-
 # Face Recognition / Embeddings
 insightface         # Includes ArcFace, retinaface, etc.
 onnxruntime                # Required for InsightFace & YOLO ONNX

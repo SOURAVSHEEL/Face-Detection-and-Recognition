@@ -1,0 +1,18 @@
+==== Anti-Spoofing Test Metrics ====
+Threshold     : 0.50
+Accuracy      : 0.9691
+F1 Score      : 0.9685
+
+Confusion Matrix:
+[[10030    98]
+ [  527  9601]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       Spoof       0.95      0.99      0.97     10128
+        Live       0.99      0.95      0.97     10128
+
+    accuracy                           0.97     20256
+   macro avg       0.97      0.97      0.97     20256
+weighted avg       0.97      0.97      0.97     20256
