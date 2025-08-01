@@ -1,26 +1,42 @@
-2025-08-01 01:34:16,972 | INFO | Using device: cuda
-2025-08-01 01:34:16,975 | INFO | GPU: NVIDIA GeForce RTX 3050 6GB Laptop GPU
-2025-08-01 01:34:16,976 | INFO | Train directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\train
-2025-08-01 01:34:16,977 | INFO | Test directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\test
-2025-08-01 01:34:16,978 | INFO | Batch size: 32, Number of epochs: 10
-2025-08-01 01:34:17,881 | INFO | Starting training for 10 epochs.
-2025-08-01 01:41:10,381 | INFO | Epoch 1/10 | Loss: 0.0073 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
-2025-08-01 01:41:10,475 | INFO | Saved best model checkpoint.
-2025-08-01 01:49:54,988 | INFO | Epoch 2/10 | Loss: 0.0002 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
-2025-08-01 01:55:02,177 | INFO | Epoch 3/10 | Loss: 0.0004 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
-2025-08-01 01:59:38,043 | INFO | Epoch 4/10 | Loss: 0.0000 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
-2025-08-01 02:03:42,349 | INFO | Epoch 5/10 | Loss: 0.0017 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
-2025-08-01 02:03:42,350 | INFO | Early stopping triggered.
-2025-08-01 02:03:42,350 | INFO | Training complete.
-2025-08-01 02:03:42,480 | INFO | Loaded best model checkpoint for testing.
-2025-08-01 02:10:19,408 | INFO | Evaluating thresholds:
-2025-08-01 02:10:19,416 | INFO | Threshold: 0.40 | Precision: 0.9800 | Recall: 0.9798 | F1: 0.9798
-2025-08-01 02:10:19,424 | INFO | Threshold: 0.45 | Precision: 0.9792 | Recall: 0.9791 | F1: 0.9791
-2025-08-01 02:10:19,434 | INFO | Threshold: 0.50 | Precision: 0.9793 | Recall: 0.9793 | F1: 0.9793
-2025-08-01 02:10:19,444 | INFO | Threshold: 0.55 | Precision: 0.9796 | Recall: 0.9795 | F1: 0.9795
-2025-08-01 02:10:19,457 | INFO | Threshold: 0.60 | Precision: 0.9790 | Recall: 0.9790 | F1: 0.9790
-2025-08-01 02:10:19,465 | INFO | Threshold: 0.65 | Precision: 0.9783 | Recall: 0.9783 | F1: 0.9783
-2025-08-01 02:10:19,474 | INFO | Threshold: 0.70 | Precision: 0.9780 | Recall: 0.9780 | F1: 0.9780
-2025-08-01 02:10:19,481 | INFO | Threshold: 0.75 | Precision: 0.9780 | Recall: 0.9779 | F1: 0.9779
-2025-08-01 02:10:19,482 | INFO | Best Threshold: 0.40 with Macro F1: 0.9798
-2025-08-01 03:51:21,636 | INFO | Best threshold selected: 0.40
+2025-08-02 01:20:27,333 | INFO | Using device: cuda
+2025-08-02 01:20:27,344 | INFO | GPU: NVIDIA GeForce RTX 3050 6GB Laptop GPU
+2025-08-02 01:20:27,345 | INFO | Train directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\train
+2025-08-02 01:20:27,345 | INFO | Test directory: C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\dataset\test
+2025-08-02 01:20:27,346 | INFO | Batch size: 32, Number of epochs: 10
+2025-08-02 01:20:32,179 | INFO | Starting training for 10 epochs.
+2025-08-02 01:33:46,919 | INFO | Epoch 1/10 | Loss: 0.0068 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-02 01:33:47,026 | INFO | Saved best model checkpoint.
+2025-08-02 01:42:55,693 | INFO | Epoch 2/10 | Loss: 0.0003 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-02 01:47:18,823 | INFO | Epoch 3/10 | Loss: 0.0001 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-02 01:51:15,176 | INFO | Epoch 4/10 | Loss: 0.0004 | Val Precision: 0.9683 | Val Recall: 0.9683 | Val F1: 0.9683
+2025-08-02 01:58:07,006 | INFO | Epoch 5/10 | Loss: 0.0032 | Val Precision: 1.0000 | Val Recall: 1.0000 | Val F1: 1.0000
+2025-08-02 01:58:07,007 | INFO | Early stopping triggered.
+2025-08-02 01:58:07,009 | INFO | Training complete.
+2025-08-02 01:58:07,170 | INFO | Loaded best model checkpoint for testing.
+2025-08-02 02:05:01,044 | INFO | Evaluating thresholds:
+2025-08-02 02:05:01,061 | INFO | Threshold: 0.40 | Precision: 0.9795 | Recall: 0.9787 | F1: 0.9787
+2025-08-02 02:05:01,071 | INFO | Threshold: 0.45 | Precision: 0.9807 | Recall: 0.9801 | F1: 0.9801
+2025-08-02 02:05:01,082 | INFO | Threshold: 0.50 | Precision: 0.9809 | Recall: 0.9804 | F1: 0.9804
+2025-08-02 02:05:01,091 | INFO | Threshold: 0.55 | Precision: 0.9817 | Recall: 0.9813 | F1: 0.9813
+2025-08-02 02:05:01,100 | INFO | Threshold: 0.60 | Precision: 0.9821 | Recall: 0.9818 | F1: 0.9818
+2025-08-02 02:05:01,109 | INFO | Threshold: 0.65 | Precision: 0.9829 | Recall: 0.9827 | F1: 0.9827
+2025-08-02 02:05:01,118 | INFO | Threshold: 0.70 | Precision: 0.9836 | Recall: 0.9836 | F1: 0.9836
+2025-08-02 02:05:01,128 | INFO | Threshold: 0.75 | Precision: 0.9848 | Recall: 0.9847 | F1: 0.9847
+2025-08-02 02:05:01,130 | INFO | Best Threshold: 0.75 with Macro F1: 0.9847
+2025-08-02 02:07:24,243 | INFO | Best threshold selected: 0.75
+2025-08-02 02:09:54,951 | INFO | Threshold: 0.75
+Accuracy: 0.9847
+
+Confusion Matrix:
+[[ 9934   194]
+ [  115 10013]]
+
+Precision (Spoof=0): 0.9886
+Recall (Spoof=0): 0.9808
+F1 (Spoof=0): 0.9847
+
+Precision (Live=1): 0.9810
+Recall (Live=1): 0.9886
+F1 (Live=1): 0.9848
+2025-08-02 02:09:54,952 | INFO | Test results saved to logs/test_metrics_v3.txt
+2025-08-02 02:09:55,073 | INFO | Final model saved at C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_final.pth

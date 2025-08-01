@@ -1,0 +1,15 @@
+
+Threshold: 0.75
+Accuracy: 0.9847
+
+Confusion Matrix:
+[[ 9934   194]
+ [  115 10013]]
+
+Precision (Spoof=0): 0.9886
+Recall (Spoof=0): 0.9808
+F1 (Spoof=0): 0.9847
+
+Precision (Live=1): 0.9810
+Recall (Live=1): 0.9886
+F1 (Live=1): 0.9848
