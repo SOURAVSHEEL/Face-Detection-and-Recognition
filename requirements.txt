@@ -7,7 +7,7 @@ scikit-learn
 matplotlib
 seaborn
 streamlit
-faiss
+faiss-cpu
 
 # Face Recognition / Embeddings
 insightface         # Includes ArcFace, retinaface, etc.
