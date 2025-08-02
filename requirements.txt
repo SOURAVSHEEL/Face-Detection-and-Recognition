@@ -12,6 +12,7 @@ faiss-cpu
 # Face Recognition / Embeddings
 insightface         # Includes ArcFace, retinaface, etc.
 onnxruntime                # Required for InsightFace & YOLO ONNX
+facenet-pytorch
 
 # Face Detection Models
 mtcnn
