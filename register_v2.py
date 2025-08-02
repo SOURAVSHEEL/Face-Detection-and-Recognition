@@ -40,7 +40,7 @@ def load_antispoofing_model(model_path=None):
         
         # Default model path if not provided
         if model_path is None:
-            model_path = r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_v3.pth"
+            model_path = r"C:\Users\soura\OneDrive\Desktop\Projects\Face-Detection-and-Recognition\anti_spoofing\model\deepPixBiS_final.pth"
         
         if not os.path.exists(model_path):
             logger.error(f"Model file not found: {model_path}")
